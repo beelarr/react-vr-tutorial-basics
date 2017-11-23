@@ -2,43 +2,32 @@ import React, { Component } from 'react';
 
 import { AppRegistry, asset, Pano, View, Text, StyleSheet } from 'react-vr';
 
+
 class Row extends Component {
-    render() {
-        return (
+    render(){
+        return(
             <View style={[{backgroundColor: this.props.color}, styles.row]}>
                 <Text style={styles.text}>{this.props.color}</Text>
             </View>
+
         )
     }
 }
 
+
 export default class Basics extends Component {
-    constructor() {
-        super();
-
-        this.state = {
-            flexDirectionIsRow: true
-        }
-
-        setInterval(() => {
-            this.setState({flexDirectionIsRow: !this.state.flexDirectionIsRow})
-        }, 5000);
-    }
-
-
     render() {
-        let flexDirection = this.state.flexDirectionIsRow ? 'row' : 'column';
-
         return (
-            <View style={[styles.container, {flexDirection: flexDirection}]}>
+            <View style={styles.container}>
                 <Pano source={asset('starry-sky.jpg')}></Pano>
-                <Row color='red'/>
-                <Row color='blue'/>
-                <Row color='green'/>
+                <Row color="red"/>
+                <Row color="blue"/>
+                <Row color="green"/>
             </View>
         )
     }
 };
+
 
 const styles = StyleSheet.create({
     text: {
@@ -53,9 +42,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: 2,
-        alignItems: 'center',
+        flexDirection: 'row',
         transform: [{translate: [-1, 0, -3]}]
+
     }
-})
+});
 
 AppRegistry.registerComponent('Basics', () => Basics);
