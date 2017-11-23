@@ -13,14 +13,25 @@ export default class Basics extends Component {
     constructor() {
         super();
 
-        this.state = {};
+        this.state = {
+            showSign: true
+        };
+
+        setInterval(() => this.setState({showSign: !this.state.showSign}), 1000);
     }
 
+
     render() {
+        let message = this.state.showSign === true ? "Welcome to VR Land" : ' ';
         return (
             <View>
                 <Pano source={asset('starry-sky.jpg')}></Pano>
+                <Text
+                    style={{ fontSize: .1,
+                            transform: [{translate: [-1, 0, -2]}]
+                    }}
 
+                >{message}</Text>
             </View>
         )
     }
