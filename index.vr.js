@@ -1,26 +1,27 @@
 import React, { Component } from 'react';
 
-import { AppRegistry, asset, Pano, View, Text, } from 'react-vr';
+import { AppRegistry, asset, Pano, View, Box } from 'react-vr';
 
 export default class Basics extends Component {
-    constructor() {
-        super();
-        this.state={
-            fontSize: .1
-        }
-    }
     render() {
         return (
             <View>
                 <Pano source={asset('starry-sky.jpg')}></Pano>
-                <Text
-                    onEnter={() => this.setState({fontSize: this.state.fontSize * 3})}
-                    onExit={() => this.setState({fontSize: this.state.fontSize / 3})}
-                style={{
-                    fontSize: this.state.fontSize,
-                    transform: [{translate: [0, 0, -2.5]}]
-                }}
-                >Hover Over ME!!!!</Text>
+                <Box
+                    dimWidth={0.5}
+                    dimHeight={0.5}
+                    dimDepth={0.5}
+                    wireframe={true}
+                    style={{
+                        color: '#dd2222',
+                        transform: [
+                            {translate: [0, 0, -3]},
+                            {translateY: 1},
+                            {translateX: -0.5},
+                            {rotateZ: 45}
+                        ]
+                    }}
+                />
             </View>
         )
     }
